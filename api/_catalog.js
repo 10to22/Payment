@@ -12,33 +12,49 @@
 
    `printfulVariantId` is what gets sent to Printful to fulfil the line.
 
-   ⚠️  ID FORMAT — CONFIRM THIS BEFORE GOING LIVE:
-   The IDs below are the hash-style IDs from your Printful dashboard
-   (e.g. 6a587ae3aa45a7). Printful's classic Orders API
-   (POST https://api.printful.com/orders) expects a NUMERIC
-   `sync_variant_id` (e.g. 4487693012). Two possibilities:
-     • If these hashes are v2 IDs, use the v2 endpoint (see stripe-webhook.js).
-     • Otherwise fetch the numeric sync_variant_id for each size once via
-       GET https://api.printful.com/store/products/{id} and paste those
-       numbers in below. Everything else works unchanged either way.
+   ID FORMAT: the values below are the NUMERIC Printful `sync_variant_id`s
+   (e.g. 5396150185) that the classic Orders API
+   (POST https://api.printful.com/orders) expects — pulled straight from
+   GET /store/products/{id} (the `id` field of each sync_variant). If you
+   add products later, use api/printful-variants.js to read the new numeric
+   IDs; do NOT paste the dashboard hash IDs (those are the `external_id`).
    ========================================================================= */
 
 const CATALOG = {
   "Whoareyou? - CD single":          { price: 8,  printfulVariantId: "" },
 
-  "10to2 - logo tee (black) (S)":    { price: 25, printfulVariantId: "6a587ae3aa4569" },
-  "10to2 - logo tee (black) (M)":    { price: 25, printfulVariantId: "6a587ae3aa45a7" },
-  "10to2 - logo tee (black) (L)":    { price: 25, printfulVariantId: "6a587ae3aa45c5" },
-  "10to2 - logo tee (black) (XL)":   { price: 25, printfulVariantId: "6a587ae3aa45d5" },
-  "10to2 - logo tee (black) (2XL)":  { price: 25, printfulVariantId: "6a587ae3aa45f8" },
-  "10to2 - logo tee (black) (3XL)":  { price: 25, printfulVariantId: "6a587ae3aa4608" },
-  "10to2 - logo tee (black) (4XL)":  { price: 25, printfulVariantId: "6a587ae3aa4625" },
-  "10to2 - logo tee (black) (5XL)":  { price: 25, printfulVariantId: "6a587ae3aa4648" },
+  "10to2 - logo tee (black) (S)":    { price: 25, printfulVariantId: "5396150185" },
+  "10to2 - logo tee (black) (M)":    { price: 25, printfulVariantId: "5396150186" },
+  "10to2 - logo tee (black) (L)":    { price: 25, printfulVariantId: "5396150187" },
+  "10to2 - logo tee (black) (XL)":   { price: 25, printfulVariantId: "5396150188" },
+  "10to2 - logo tee (black) (2XL)":  { price: 25, printfulVariantId: "5396150189" },
+  "10to2 - logo tee (black) (3XL)":  { price: 25, printfulVariantId: "5396150190" },
+  "10to2 - logo tee (black) (4XL)":  { price: 25, printfulVariantId: "5396150191" },
+  "10to2 - logo tee (black) (5XL)":  { price: 25, printfulVariantId: "5396150192" },
+
+  "10to2 - zip hoodie (S)":          { price: 45, printfulVariantId: "5396152424" },
+  "10to2 - zip hoodie (M)":          { price: 45, printfulVariantId: "5396152425" },
+  "10to2 - zip hoodie (L)":          { price: 45, printfulVariantId: "5396152426" },
+  "10to2 - zip hoodie (XL)":         { price: 45, printfulVariantId: "5396152427" },
+  "10to2 - zip hoodie (2XL)":        { price: 45, printfulVariantId: "5396152428" },
+  "10to2 - zip hoodie (3XL)":        { price: 45, printfulVariantId: "5396152429" },
+
+  "10to2 - jersey (2XS)":            { price: 35, printfulVariantId: "5396150016" },
+  "10to2 - jersey (XS)":             { price: 35, printfulVariantId: "5396150017" },
+  "10to2 - jersey (S)":              { price: 35, printfulVariantId: "5396150018" },
+  "10to2 - jersey (M)":              { price: 35, printfulVariantId: "5396150019" },
+  "10to2 - jersey (L)":              { price: 35, printfulVariantId: "5396150020" },
+  "10to2 - jersey (XL)":             { price: 35, printfulVariantId: "5396150021" },
+  "10to2 - jersey (2XL)":            { price: 35, printfulVariantId: "5396150022" },
+  "10to2 - jersey (3XL)":            { price: 35, printfulVariantId: "5396150023" },
+  "10to2 - jersey (4XL)":            { price: 35, printfulVariantId: "5396150024" },
+  "10to2 - jersey (5XL)":            { price: 35, printfulVariantId: "5396150025" },
+  "10to2 - jersey (6XL)":            { price: 35, printfulVariantId: "5396150026" },
 
   "Ifwecrash - poster 18x24":        { price: 12, printfulVariantId: "" },
   "One2many - cassette":             { price: 14, printfulVariantId: "" },
   "sticker pack (4)":                { price: 5,  printfulVariantId: "" },
-  "10to2 - wall flag":               { price: 26, printfulVariantId: "6a587b3c453ab3" },
+  "10to2 - wall flag":               { price: 26, printfulVariantId: "5396151473" },
 };
 
 /* Must match BACKEND_CONFIG.shipping in the site's index.html. */
