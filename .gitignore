@@ -1,0 +1,6 @@
+# Generated download bundle — the source files are already tracked here.
+*.zip
+
+# Local env — never commit real keys.
+.env
+node_modules/
