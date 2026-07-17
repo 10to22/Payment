@@ -15,7 +15,7 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 // fine to start; a stable product id is better once you have one).
 const PRICES_CENTS = {
   "Whoareyou? - CD single": 800,
-  "10to2 - logo tee (black)": 2500,
+  "10to2 - logo tee (black) (M)": 2500,
   "Ifwecrash - poster 18x24": 1200,
   "One2many - cassette": 1400,
   "sticker pack (4)": 500,
