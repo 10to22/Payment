@@ -1,0 +1,9 @@
+{
+  "name": "10to2-payment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stripe checkout + Printful fulfilment backend for 10to2.net",
+  "dependencies": {
+    "stripe": "^17.0.0"
+  }
+}
