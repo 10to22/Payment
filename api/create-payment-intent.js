@@ -61,6 +61,10 @@ module.exports = async (req, res) => {
         subtotal: String(subtotal),
         shipping_cost: String(shipCost),
         fulfil,                                   // [{v:variantId,q:qty}, ...]
+        /* Item names + qty for the confirmation email. Metadata values cap
+           at 500 chars; a truncated value just fails JSON.parse and the
+           email falls back to showing only the total. */
+        items: JSON.stringify(lines.map(l => ({ n: l.name, q: l.qty }))).slice(0, 500),
         ship_name: shipping.name || "",
         ship_address: shipping.address || "",
         ship_city: shipping.city || "",

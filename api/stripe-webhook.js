@@ -29,6 +29,7 @@
 
 const Stripe = require("stripe");
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const { sendOrderEmail } = require("./_email");
 
 function readRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -115,6 +116,15 @@ module.exports = async (req, res) => {
          order. Guard against duplicate orders via Printful's external_id. */
       console.error("Fulfilment error:", err.message);
       return res.status(500).send("Fulfilment failed, will retry");
+    }
+    /* Custom order-confirmation email. Only after fulfilment succeeded, so
+       Stripe's retries can't mail the buyer twice for a failed order — and
+       an email problem must never fail the webhook (fulfilment is done). */
+    try {
+      const r = await sendOrderEmail(event.data.object);
+      console.log("Order email:", JSON.stringify(r));
+    } catch (err) {
+      console.error("Order email failed (fulfilment unaffected):", err.message);
     }
   }
 

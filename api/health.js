@@ -30,6 +30,10 @@ module.exports = async (req, res) => {
     printful_store_id_set: !!process.env.PRINTFUL_STORE_ID,
     printful_confirm_orders: process.env.PRINTFUL_CONFIRM_ORDERS === "true",
     printful_reachable: null,
+    /* Custom order-confirmation email (optional — Stripe receipts are
+       separate). false = the XP-styled email is skipped, nothing breaks. */
+    resend_api_key: !!process.env.RESEND_API_KEY,
+    email_from_set: !!process.env.EMAIL_FROM,
   };
 
   /* Live check: can the token actually talk to Printful? Read-only call. */

@@ -21,6 +21,7 @@
 const Stripe = require("stripe");
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const { createPrintfulOrder } = require("./stripe-webhook.js");
+const { sendOrderEmail } = require("./_email");
 
 module.exports = async (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -57,7 +58,11 @@ module.exports = async (req, res) => {
     }
 
     await createPrintfulOrder(pi);
-    return res.status(200).json({ ok: true,
+    /* A replayed order missed its confirmation email too — send it now.
+       Email failure never fails the replay (the order is already placed). */
+    let email = null;
+    try { email = await sendOrderEmail(pi); } catch (e) { email = { failed: e.message }; }
+    return res.status(200).json({ ok: true, email,
       message: "Printful order created for " + piId + ". Check Printful -> Orders" +
         (process.env.PRINTFUL_CONFIRM_ORDERS === "true" ? "." : " — it's a draft; approve it there to ship.") });
   } catch (err) {
