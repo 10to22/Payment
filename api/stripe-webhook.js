@@ -123,3 +123,6 @@ module.exports = async (req, res) => {
 
 /* Vercel / Next.js: keep the body raw for signature verification. */
 module.exports.config = { api: { bodyParser: false } };
+
+/* Shared with api/replay-order.js so a missed webhook can be replayed. */
+module.exports.createPrintfulOrder = createPrintfulOrder;
