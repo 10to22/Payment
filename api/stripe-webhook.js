@@ -47,10 +47,9 @@ async function createPrintfulOrder(pi) {
   const items = fulfil
     .filter(l => l.v)                       // skip anything without a variant ID
     .map(l => ({
-      /* Classic Printful API expects sync_variant_id (numeric). If your IDs
-         are the hash type and this 422s, see the note in _catalog.js and
-         either map to numeric IDs or switch to the v2 endpoint below. */
-      sync_variant_id: l.v,
+      /* Printful expects sync_variant_id as an integer; the catalog stores
+         it as a string, so coerce numeric IDs (non-numeric pass through). */
+      sync_variant_id: /^\d+$/.test(String(l.v)) ? Number(l.v) : l.v,
       quantity: l.q || 1,
     }));
 
