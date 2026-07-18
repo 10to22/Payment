@@ -6,9 +6,9 @@
    file is the only place prices come from. The frontend's numbers are
    display-only; the server re-derives every amount from here.
 
-   Each key is the EXACT item name the frontend sends. For the tee, the
-   frontend appends the size in parentheses (e.g. "10to2 - logo tee
-   (black) (M)"), so every size is its own line here.
+   Each key is the EXACT item name the frontend sends. For sized items,
+   the frontend appends the size in parentheses (e.g. "10to2 - logo tee
+   (white) (M)"), so every size is its own line here.
 
    `printfulVariantId` is what gets sent to Printful to fulfil the line.
 
@@ -23,14 +23,14 @@
 const CATALOG = {
   "Whoareyou? - CD single":          { price: 8,  printfulVariantId: "" },
 
-  "10to2 - logo tee (black) (S)":    { price: 25, printfulVariantId: "5396150185" },
-  "10to2 - logo tee (black) (M)":    { price: 25, printfulVariantId: "5396150186" },
-  "10to2 - logo tee (black) (L)":    { price: 25, printfulVariantId: "5396150187" },
-  "10to2 - logo tee (black) (XL)":   { price: 25, printfulVariantId: "5396150188" },
-  "10to2 - logo tee (black) (2XL)":  { price: 25, printfulVariantId: "5396150189" },
-  "10to2 - logo tee (black) (3XL)":  { price: 25, printfulVariantId: "5396150190" },
-  "10to2 - logo tee (black) (4XL)":  { price: 25, printfulVariantId: "5396150191" },
-  "10to2 - logo tee (black) (5XL)":  { price: 25, printfulVariantId: "5396150192" },
+  "10to2 - logo tee (white) (S)":    { price: 25, printfulVariantId: "5396150185" },
+  "10to2 - logo tee (white) (M)":    { price: 25, printfulVariantId: "5396150186" },
+  "10to2 - logo tee (white) (L)":    { price: 25, printfulVariantId: "5396150187" },
+  "10to2 - logo tee (white) (XL)":   { price: 25, printfulVariantId: "5396150188" },
+  "10to2 - logo tee (white) (2XL)":  { price: 25, printfulVariantId: "5396150189" },
+  "10to2 - logo tee (white) (3XL)":  { price: 25, printfulVariantId: "5396150190" },
+  "10to2 - logo tee (white) (4XL)":  { price: 25, printfulVariantId: "5396150191" },
+  "10to2 - logo tee (white) (5XL)":  { price: 25, printfulVariantId: "5396150192" },
 
   "10to2 - zip hoodie (S)":          { price: 40, printfulVariantId: "5396152424" },
   "10to2 - zip hoodie (M)":          { price: 40, printfulVariantId: "5396152425" },
